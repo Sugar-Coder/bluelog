@@ -34,5 +34,5 @@ def load_user(user_id):
 
 
 login_manager.login_view = 'auth.login'
-# login_manager.login_message = 'Your custom message'
+login_manager.login_message = 'Welcome home!'
 login_manager.login_message_category = 'warning'

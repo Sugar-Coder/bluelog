@@ -16,13 +16,13 @@ basedir = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
 #     prefix = 'sqlite:///'
 # else:
 #     prefix = 'sqlite:////'
-prefix = 'mysql://'
+prefix = 'mysql+mysqlconnector://'
 
 
 class BaseConfig(object):
     SECRET_KEY = os.getenv('SECRET_KEY', 'dev key')
 
-    DEBUG_TB_INTERCEPT_REDIRECTS = False
+    DEBUG_TB_INTERCEPT_REDIRECTS = False  # flask debug toolbar 拦截重定向用的
 
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_RECORD_QUERIES = True
@@ -50,17 +50,17 @@ class BaseConfig(object):
 
 
 class DevelopmentConfig(BaseConfig):
-    SQLALCHEMY_DATABASE_URI = prefix + 'webdb:webdata@localhost/awesome'  # os.path.join(basedir, 'data-dev.db')
+    SQLALCHEMY_DATABASE_URI = prefix + 'webdb:webdata@localhost/awesome?charset=utf8'  # os.path.join(basedir, 'data-dev.db')
 
 
 class TestingConfig(BaseConfig):
     TESTING = True
     WTF_CSRF_ENABLED = False
-    SQLALCHEMY_DATABASE_URI = 'mysql://webdb:webdata@localhost/awesome'  # in-memory database
+    SQLALCHEMY_DATABASE_URI = prefix + 'webdb:webdata@localhost/awesome?charset=utf8'  # in-memory database
 
 
 class ProductionConfig(BaseConfig):
-    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', prefix + 'webdb:webdata@localhost/awesome')
+    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', prefix + 'webdb:webdata@localhost/awesome?charset=utf8')
 # 获取.env中的环境变量(要激活pipenv虚拟环境）
 
 
