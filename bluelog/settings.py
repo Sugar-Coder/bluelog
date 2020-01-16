@@ -11,11 +11,12 @@ import sys
 basedir = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
 
 # SQLite URI compatible
-WIN = sys.platform.startswith('win')
-if WIN:
-    prefix = 'sqlite:///'
-else:
-    prefix = 'sqlite:////'
+# WIN = sys.platform.startswith('win')
+# if WIN:
+#     prefix = 'sqlite:///'
+# else:
+#     prefix = 'sqlite:////'
+prefix = 'mysql://'
 
 
 class BaseConfig(object):
@@ -34,7 +35,7 @@ class BaseConfig(object):
     MAIL_USE_SSL = True
     MAIL_USERNAME = os.getenv('MAIL_USERNAME')
     MAIL_PASSWORD = os.getenv('MAIL_PASSWORD')
-    MAIL_DEFAULT_SENDER = ('Bluelog Admin', MAIL_USERNAME)
+    MAIL_DEFAULT_SENDER = ('Blog\'s Admin', MAIL_USERNAME)
 
     BLUELOG_EMAIL = os.getenv('BLUELOG_EMAIL')
     BLUELOG_POST_PER_PAGE = 10
@@ -49,17 +50,18 @@ class BaseConfig(object):
 
 
 class DevelopmentConfig(BaseConfig):
-    SQLALCHEMY_DATABASE_URI = prefix + os.path.join(basedir, 'data-dev.db')
+    SQLALCHEMY_DATABASE_URI = prefix + 'webdb:webdata@localhost/awesome'  # os.path.join(basedir, 'data-dev.db')
 
 
 class TestingConfig(BaseConfig):
     TESTING = True
     WTF_CSRF_ENABLED = False
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///:memory:'  # in-memory database
+    SQLALCHEMY_DATABASE_URI = 'mysql://webdb:webdata@localhost/awesome'  # in-memory database
 
 
 class ProductionConfig(BaseConfig):
-    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', prefix + os.path.join(basedir, 'data.db'))
+    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', prefix + 'webdb:webdata@localhost/awesome')
+# 获取.env中的环境变量(要激活pipenv虚拟环境）
 
 
 config = {
