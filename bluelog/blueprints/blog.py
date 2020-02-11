@@ -104,3 +104,8 @@ def change_theme(theme_name):
     response = make_response(redirect_back())
     response.set_cookie('theme', theme_name, max_age=30 * 24 * 60 * 60)
     return response
+
+
+@blog_bp.route('/valentine')
+def valentine_gift():
+    return render_template('blog/valentine.html')
