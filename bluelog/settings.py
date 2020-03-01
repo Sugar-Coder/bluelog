@@ -50,17 +50,17 @@ class BaseConfig(object):
 
 
 class DevelopmentConfig(BaseConfig):
-    SQLALCHEMY_DATABASE_URI = prefix + 'webdb:webdata@localhost/awesome?charset=utf8'  # os.path.join(basedir, 'data-dev.db')
+    SQLALCHEMY_DATABASE_URI = prefix + 'webdb:webdata@localhost/awesome?charset=utf8mb4'  # os.path.join(basedir, 'data-dev.db')
 
 
 class TestingConfig(BaseConfig):
     TESTING = True
     WTF_CSRF_ENABLED = False
-    SQLALCHEMY_DATABASE_URI = prefix + 'webdb:webdata@localhost/awesome?charset=utf8'  # in-memory database
+    SQLALCHEMY_DATABASE_URI = prefix + 'webdb:webdata@localhost/awesome?charset=utf8mb4'  # in-memory database
 
 
 class ProductionConfig(BaseConfig):
-    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', prefix + 'webdb:webdata@localhost/awesome?charset=utf8')
+    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', prefix + 'webdb:webdata@localhost/awesome?charset=utf8mb4')
 # 获取.env中的环境变量(要激活pipenv虚拟环境）
 
 
