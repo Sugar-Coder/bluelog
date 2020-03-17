@@ -30,6 +30,7 @@ class BaseConfig(object):
     CKEDITOR_ENABLE_CSRF = True
     CKEDITOR_FILE_UPLOADER = 'admin.upload_image'
     CKEDITOR_SERVE_LOCAL = True  # 使用内置的本地资源
+    CKEDITOR_PKG_TYPE = 'full'
 
     MAIL_SERVER = os.getenv('MAIL_SERVER')
     MAIL_PORT = 465
