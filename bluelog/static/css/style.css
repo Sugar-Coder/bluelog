@@ -53,6 +53,6 @@ footer {
 #rocket { /* the little rocket */
 position: fixed;
 width:240px; height:180px;
-bottom: 0px; right: 0px;
+bottom: 50px; right: 0px;
 display: none;
 }

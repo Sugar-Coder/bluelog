@@ -16,11 +16,11 @@ $(document).ready(function() {
                     scrollTop: 0
                 }, 500);
                 $("#rocket").animate({
-                    bottom: '100px',
+                    bottom: '150px',
                     opacity: '0',
                 }, 400, function () {
                     $("#rocket").css({
-                        bottom: '0px',
+                        bottom: '50px',
                     });
                 });
             });
