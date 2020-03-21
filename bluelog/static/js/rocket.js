@@ -18,7 +18,7 @@ jQuery(document).ready(function() {
                 jQuery("#rocket").animate({
                     bottom: '150px',
                     opacity: '0',
-                }, 400, function () {
+                }, 500, function () {
                     jQuery("#rocket").css({
                         bottom: '50px',
                     });
