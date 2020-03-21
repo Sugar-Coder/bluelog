@@ -17,9 +17,5 @@
             {% include "blog/_sidebar.html" %}
         </div>
     </div>
-{% block scripts %}
-    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.4.1.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/rocket.js') }}"></script>
-{% endblock scripts %}
     <img id="rocket" src="{{ url_for('static', filename='rocket.png') }}" alt="小火箭"/>
 {% endblock %}

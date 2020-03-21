@@ -1,25 +1,25 @@
-$(document).ready(function() {
-            $(window).scroll(function () {
-                var scrolldist = $('body').scrollTop()+$('html').scrollTop();
+jQuery(document).ready(function() {
+            jQuery(window).scroll(function () {
+                var scrolldist = jQuery('body').scrollTop()+jQuery('html').scrollTop();
                 if (scrolldist > 100) {
-                    $("#rocket").css({
+                    jQuery("#rocket").css({
                         opacity: '1',
                     })
-                    $('#rocket').show("1000");
+                    jQuery('#rocket').show("1000");
                 } else {
-                    $('#rocket').fadeOut("slow");
+                    jQuery('#rocket').fadeOut("slow");
                 }
             });
 
-            $('#rocket').click(function () {
-                $("body, html").animate({
+            jQuery('#rocket').click(function () {
+                jQuery("body, html").animate({
                     scrollTop: 0
                 }, 500);
-                $("#rocket").animate({
+                jQuery("#rocket").animate({
                     bottom: '150px',
                     opacity: '0',
                 }, 400, function () {
-                    $("#rocket").css({
+                    jQuery("#rocket").css({
                         bottom: '50px',
                     });
                 });
