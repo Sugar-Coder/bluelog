@@ -11,8 +11,8 @@
               href="{{ url_for('static', filename='css/%s.min.css' % request.cookies.get('theme', 'black_swan')) }}"
               type="text/css">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
-        <link rel="stylesheet"
-          href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/darcula.min.css">
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/darcula.min.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='open-iconic/font/css/open-iconic-bootstrap.css') }}">
     {% endblock head %}
 </head>
 <body>
@@ -28,6 +28,13 @@
                 <ul class="navbar-nav mr-auto">
                     {{ render_nav_item('blog.index', 'Home') }}
                     {{ render_nav_item('blog.about', 'About') }}
+                    <form class="form-inline my-2 my-lg-0" action="{{ url_for('blog.search') }}">
+                        <input type="text" name="q" class="form-control mr-sm-1" placeholder="Find sth you Like"
+                               required>
+                        <button class="btn btn-light my-2 my-sm-0" type="submit">
+                            <span class="oi oi-magnifying-glass"></span>
+                        </button>
+                    </form>
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">

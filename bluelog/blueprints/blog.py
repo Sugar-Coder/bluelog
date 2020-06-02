@@ -104,3 +104,19 @@ def change_theme(theme_name):
     response = make_response(redirect_back())
     response.set_cookie('theme', theme_name, max_age=30 * 24 * 60 * 60)
     return response
+
+
+@blog_bp.route('/search')
+def search():
+    q = request.args.get('q', '')
+    if q == '':
+        flash('Enter keyword about anything.', 'warning')
+        return redirect_back()
+    if len(q) < 3:
+        flash('keyword\'s length must >= 3', 'warning')
+        return redirect_back()
+    page = request.args.get('page', 1, type=int)
+    per_page = current_app.config['BLUELOG_COMMENT_PER_PAGE']
+    pagination = Post.query.whooshee_search(q).paginate(page, per_page)
+    results = pagination.items
+    return render_template('blog/search.html', q=q, posts=results, pagination=pagination)

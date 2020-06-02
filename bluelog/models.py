@@ -12,6 +12,8 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 from bluelog.extensions import db
 
+from bluelog.extensions import whooshee
+
 
 class Admin(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
@@ -44,6 +46,7 @@ class Category(db.Model):
         db.session.commit()
 
 
+@whooshee.register_model('title', 'body')
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(60))

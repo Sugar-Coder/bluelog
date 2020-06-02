@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% from 'bootstrap/pagination.html' import render_pagination %}
+
+{% block title %}{{ q }}'s results{% endblock %}
+
+{% block content %}
+    <div class="page-header">
+        <h1>Keyword: {{ q }}</h1>
+        <p class="text-muted">{{ posts|length }} posts</p>
+    </div>
+    <div class="row">
+        <div class="col-sm-8">
+            {% include "blog/_posts.html" %}
+            <div class="page-footer">{{ render_pagination(pagination) }}</div>
+        </div>
+        <div class="col-sm-4 sidebar">
+            {% include "blog/_sidebar.html" %}
+        </div>
+    </div>
+    <img id="rocket" src="{{ url_for('static', filename='rocket.png') }}" alt="小火箭"/>
+{% endblock %}
