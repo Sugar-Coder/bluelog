@@ -50,6 +50,8 @@ class BaseConfig(object):
     BLUELOG_UPLOAD_PATH = os.path.join(basedir, 'uploads')
     BLUELOG_ALLOWED_IMAGE_EXTENSIONS = ['png', 'jpg', 'jpeg', 'gif']
 
+    WHOOSHEE_MIN_STRING_LEN = 2  # 两个词作为最小搜索长度
+
 
 class DevelopmentConfig(BaseConfig):
     SQLALCHEMY_DATABASE_URI = prefix + 'webdb:webdata@localhost/awesome?charset=utf8mb4'  # os.path.join(basedir, 'data-dev.db')

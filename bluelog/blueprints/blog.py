@@ -112,8 +112,8 @@ def search():
     if q == '':
         flash('Enter keyword about anything.', 'warning')
         return redirect_back()
-    if len(q) < 3:
-        flash('keyword\'s length must >= 3', 'warning')
+    if len(q) < 2:
+        flash('keyword\'s length must >= 2', 'warning')
         return redirect_back()
     page = request.args.get('page', 1, type=int)
     per_page = current_app.config['BLUELOG_COMMENT_PER_PAGE']
