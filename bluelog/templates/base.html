@@ -11,7 +11,7 @@
               href="{{ url_for('static', filename='css/%s.min.css' % request.cookies.get('theme', 'black_swan')) }}"
               type="text/css">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/darcula.min.css">
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/darcula.min.css">
         <link rel="stylesheet" href="{{ url_for('static', filename='open-iconic/font/css/open-iconic-bootstrap.css') }}">
     {% endblock head %}
 </head>
@@ -118,7 +118,7 @@
     <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.4.1.min.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/rocket.js') }}"></script>
 
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/highlight.min.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
     {{ moment.include_moment(local_js=url_for('static', filename='js/moment-with-locales.min.js')) }}
 {% endblock %}
