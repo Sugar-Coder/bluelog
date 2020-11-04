@@ -120,3 +120,8 @@ def search():
     pagination = Post.query.whooshee_search(q).paginate(page, per_page)
     results = pagination.items
     return render_template('blog/search.html', q=q, posts=results, pagination=pagination)
+
+
+@blog_bp.route('/site')
+def site():
+    return redirect('https://sugar-coder.github.io/')
