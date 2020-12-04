@@ -5,7 +5,7 @@
     :copyright: © 2018 Grey Li <withlihui@gmail.com>
     :license: MIT, see LICENSE for more details.
 """
-from flask import render_template, flash, redirect, url_for, Blueprint
+from flask import render_template, flash, redirect, url_for, Blueprint, request
 from flask_login import login_user, logout_user, login_required, current_user
 
 from bluelog.forms import LoginForm
@@ -21,7 +21,7 @@ def login():
         return redirect(url_for('blog.index'))
 
     form = LoginForm()
-    if form.validate_on_submit():
+    if request.method == 'POST' and form.validate_on_submit():
         username = form.username.data
         password = form.password.data
         remember = form.remember.data
