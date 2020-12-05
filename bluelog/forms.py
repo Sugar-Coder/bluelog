@@ -17,8 +17,10 @@ from bluelog.models import Category
 class LoginForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired(), Length(1, 20)])
     password = PasswordField('Password', validators=[DataRequired(), Length(1, 128)])
+    captcha = StringField('Captcha')
     remember = BooleanField('Remember me')
     submit = SubmitField('Log in')
+    getCap = SubmitField('Get Captcha')
 
 
 class SettingForm(FlaskForm):

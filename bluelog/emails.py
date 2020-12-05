@@ -43,3 +43,11 @@ def send_new_reply_email(comment):
                    '<p><a href="%s">%s</a></p>'
                    '<p><small style="color: #868e96">Do not reply this email.</small></p>'
                    % (comment.post.title.encode("utf-8"), post_url, post_url))
+
+
+def send_validation_email(captcha):
+    send_mail(subject='Login Validation', to=current_app.config['BLUELOG_EMAIL'],
+              html='<p>Some one try to Login</p>'
+                   '<p>The validation code: <strong>%s</strong></p>'
+                   '<p>If you haven\'t done this opertaion, ignore this!</p>'
+                   % captcha)
