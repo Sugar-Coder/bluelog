@@ -12,6 +12,7 @@ except ImportError:
 
 from flask import request, redirect, url_for, current_app
 
+import random
 
 def is_safe_url(target):
     ref_url = urlparse(request.host_url)
@@ -31,3 +32,7 @@ def redirect_back(default='blog.index', **kwargs):
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in current_app.config['BLUELOG_ALLOWED_IMAGE_EXTENSIONS']
+
+
+def gen_captcha():
+    return ''.join(random.sample('zyxwvutsrqponmlkjihgfedcba1234567890!@#$%&*', random.randint(7, 8)))

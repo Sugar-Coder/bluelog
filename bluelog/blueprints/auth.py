@@ -5,14 +5,13 @@
     :copyright: © 2018 Grey Li <withlihui@gmail.com>
     :license: MIT, see LICENSE for more details.
 """
-import random
 
 from flask import render_template, flash, redirect, url_for, Blueprint, request
 from flask_login import login_user, logout_user, login_required, current_user
 
 from bluelog.forms import LoginForm
 from bluelog.models import Admin
-from bluelog.utils import redirect_back
+from bluelog.utils import redirect_back, gen_captcha
 from bluelog.emails import send_validation_email
 
 from bluelog.extensions import db
@@ -38,9 +37,7 @@ def login():
                     login_user(admin, remember)
                     flash('Welcome back.', 'info')
                     # 生成新的无效验证码
-                    newCaptcha = ''.join(
-                    random.sample('zyxwvutsrqponmlkjihgfedcba1234567890!@#$%&*', random.randint(7, 8)))
-                    admin.captcha = newCaptcha
+                    admin.captcha = gen_captcha()
                     db.session.commit()
                     redirect_back()
                     return redirect_back()
@@ -48,14 +45,14 @@ def login():
             else:
                 flash('No account.', 'warning')
             # 生成新的无效验证码
-            newCaptcha = ''.join(random.sample('zyxwvutsrqponmlkjihgfedcba1234567890!@#$%&*', random.randint(7, 8)))
+            newCaptcha = gen_captcha()
             admin.captcha = newCaptcha
             db.session.commit()
         elif form.getCap.data:
             username = form.username.data
             admin = Admin.query.first()
             if username == admin.username:
-                newCaptcha = ''.join(random.sample('zyxwvutsrqponmlkjihgfedcba1234567890!@#$%&*', random.randint(7, 8)))
+                newCaptcha = gen_captcha()
                 admin.captcha = newCaptcha
                 db.session.commit()
                 send_validation_email(newCaptcha)
