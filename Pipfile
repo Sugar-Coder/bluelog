@@ -1,11 +1,11 @@
 [[source]]
-url = "https://pypi.tuna.tsinghua.edu.cn/simple"
+url = "http://mirrors.aliyun.com/pypi/simple"
 verify_ssl = true
 name = "pypi"
 
 [dev-packages]
 coverage = "*"
-watchdog = "*"
+watchdog = "==0.8.3"
 "flake8" = "*"
 faker = "*"
 
@@ -14,7 +14,6 @@ flask = "*"
 flask-ckeditor = "*"
 flask-mail = "*"
 flask-sqlalchemy = "*"
-flask-wtf = "*"
 flask-moment = "*"
 python-dotenv = "*"
 bootstrap-flask = "*"
@@ -27,3 +26,5 @@ mysql-connector = "*"
 flask-caching = "*"
 flask-whooshee = "*"
 email-validator = "*"
+flask-wtf = "==0.14.2"
+werkzeug = "==0.16.1"
